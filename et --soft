@@ -1,0 +1,112 @@
+[33mcommit 7f43b95c972a3fe4dee843b046fd213847f6018f[m
+Author: MahmoudKMaarouf <mmaarouf@ucsd.edu>
+Date:   Wed Mar 10 22:37:11 2021 -0800
+
+    reorganized structure
+
+:000000 100644 0000000 8fd0ef8 A	.py Files/Extra_Analysis.py
+:000000 100644 0000000 4395ea3 A	.py Files/Topic_Modeling.py
+:000000 100644 0000000 fe50d83 A	.py Files/Topic_Modeling_Questions_Answers_Tags.py
+:000000 100644 0000000 162590b A	Data .csv Files/Answers.csv
+:000000 100644 0000000 639b3ed A	Data .csv Files/Questions.csv
+:000000 100644 0000000 dbe5320 A	Data .csv Files/Tags.csv
+:000000 100644 0000000 010278f A	Group0_Assignment1_Test_Cases.ipynb
+:000000 100644 0000000 0cf2180 A	Jupyter Notebooks/.ipynb_checkpoints/Merged_Notebook-checkpoint.ipynb
+:000000 100644 0000000 743ec66 A	Jupyter Notebooks/.ipynb_checkpoints/Sentiment_analysis-checkpoint.ipynb
+:000000 100644 0000000 a4ec95f A	Jupyter Notebooks/.ipynb_checkpoints/Topic_Modeling-checkpoint.ipynb
+:000000 100644 0000000 9ccf6fb A	Jupyter Notebooks/.ipynb_checkpoints/Topic_Modeling_Questions_Answers_Tags-checkpoint.ipynb
+:000000 100644 0000000 3030ffe A	Jupyter Notebooks/.ipynb_checkpoints/extract_data-checkpoint.ipynb
+:000000 100644 0000000 d2e91d3 A	Jupyter Notebooks/Extra_Analysis.ipynb
+:000000 100644 0000000 743ec66 A	Jupyter Notebooks/Sentiment_analysis.ipynb
+:000000 100644 0000000 d7d8e48 A	Visualizations/IDEbar_slow.gif
+:000000 100644 0000000 6a0ceb5 A	Visualizations/IDEchart.png
+:000000 100644 0000000 4334df0 A	Visualizations/LIBbar_slow.gif
+:000000 100644 0000000 f748103 A	Visualizations/LIBchart.png
+:000000 100644 0000000 48ad787 A	Visualizations/OSchart.png
+:000000 100644 0000000 3b0d5c5 A	Visualizations/OSpie_slow.gif
+:000000 100644 0000000 039add9 A	Visualizations/PMchart.png
+:000000 100644 0000000 714c0e6 A	Visualizations/PMpie_slow.gif
+:000000 100644 0000000 9afa0cf A	Visualizations/TopicChart2_pct.png
+:000000 100644 0000000 b7aee9e A	Visualizations/topic_21.png
+:000000 100644 0000000 f1fe4ea A	Visualizations/topic_63.png
+
+[33mcommit a46b05a2102eea330745488bbbace3515bbb0b1d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: hmojtahed <78324645+hmojtahed@users.noreply.github.com>
+Date:   Tue Mar 9 18:40:22 2021 -0800
+
+    Finalized Topic Modeling Including Visualization
+
+:000000 100644 0000000 5818627 A	Topic_Modeling_Questions_Answers_Tags.ipynb
+
+[33mcommit ae6b8e8308966931652dda5af34def6421fa877c[m
+Author: SonglinChen0302 <78324902+SonglinChen0302@users.noreply.github.com>
+Date:   Tue Mar 9 20:10:04 2021 -0500
+
+    Add files via upload
+
+:000000 100644 0000000 c9f73cf A	sentiment.py
+
+[33mcommit 50964df07d1c1d4156d5850560050d3486a61157[m
+Author: MahmoudKMaarouf <44007989+MahmoudKMaarouf@users.noreply.github.com>
+Date:   Sun Feb 21 15:02:15 2021 -0800
+
+    extra analysis + charts/animations
+
+:000000 100644 0000000 3c51656 A	Extra Analysis.ipynb
+
+[33mcommit 48264c31e10b36b8e96910502cdbe974157dab86[m[33m ([m[1;31morigin/vidya[m[33m)[m
+Author: vidyakanekal <vidyakanekal@gmail.com>
+Date:   Sun Feb 21 12:31:29 2021 -0800
+
+    adding database merges, Kaggle API and updated README
+
+:000000 100644 0000000 00d822e A	environment.yml
+
+[33mcommit bd769a4f2f8d4e7ea0d8955e19a17f0a85530604[m
+Author: hmojtahed <78324645+hmojtahed@users.noreply.github.com>
+Date:   Mon Feb 15 04:00:21 2021 -0800
+
+    Add files via upload
+
+:000000 100644 0000000 a65cb82 A	Visualizations/Heatmap_LDA_ Multicore_vs_LDA_Mallet.png
+:000000 100644 0000000 cbee671 A	Visualizations/Heatmap_LDA_vs_LDA_Multicore.png
+:000000 100644 0000000 f787f0e A	Visualizations/Histogram.png
+:000000 100644 0000000 89c9563 A	Visualizations/Pyldavis.PNG
+:000000 100644 0000000 5f5f516 A	Visualizations/WordCloud.png
+
+[33mcommit 80df2c368355f7c25967b660a6900bdba052d468[m
+Author: hmojtahed <78324645+hmojtahed@users.noreply.github.com>
+Date:   Mon Feb 15 03:58:56 2021 -0800
+
+    Create gitkeep
+
+:000000 100644 0000000 8b13789 A	Visualizations/gitkeep
+
+[33mcommit 860551c15a6e3837d8b27473dc16a41b14d8f35e[m
+Author: hmojtahed <78324645+hmojtahed@users.noreply.github.com>
+Date:   Mon Feb 15 03:46:40 2021 -0800
+
+    Add files via upload
+    
+    Topic Modeling
+
+:000000 100644 0000000 7d60c46 A	Topic_Modeling.ipynb
+
+[33mcommit f28dfeba5f79555a08d5eb8d86fe675524185555[m
+Author: kma003 <kmanderson003@gmail.com>
+Date:   Sun Feb 7 18:24:01 2021 -0800
+
+    Add files via upload
+    
+    Initial commit for data extraction program, uploaded as a python file and an ipython notebook
+
+:000000 100644 0000000 9beff41 A	extract_data.ipynb
+:000000 100644 0000000 f1ccdcd A	extract_data.py
+
+[33mcommit acdfddc90354e12d913ff965e3387dcd476f48a2[m
+Author: MahmoudKMaarouf <44007989+MahmoudKMaarouf@users.noreply.github.com>
+Date:   Sun Jan 31 13:48:17 2021 -0800
+
+    Initial commit
+
+:000000 100644 0000000 77e2e0e A	README.md

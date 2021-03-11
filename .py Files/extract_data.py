@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 from io import StringIO
@@ -123,30 +123,91 @@ def get_code(html):
 # In[ ]:
 
 
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+# Import the dataset directly from Kaggle 
+# Requires a Kaggle account linked to an API key on your device 
+api = KaggleApi()
+api.authenticate()
+api.dataset_download_files('stackoverflow/pythonquestions', path='./', unzip=True)
+
+
+# In[2]:
+
+
 import pandas as pd
 
-# File paths
+# File Paths 
 file_questions = 'Questions.csv'
 file_answers = 'Answers.csv'
+file_tags = 'Tags.csv'
+
+dates = ["CreationDate"]
 
 # Load dataframes (only loading first 10000 rows for now to reduce processing time)
-questions_df = pd.read_csv(file_questions, nrows=10000, encoding = 'iso-8859-1')
-answers_df = pd.read_csv(file_answers, nrows=10000, encoding = 'iso-8859-1')
+questions_df = pd.read_csv(file_questions, encoding = 'iso-8859-1', nrows=10000, parse_dates=dates)
+answers_df = pd.read_csv(file_answers, encoding = 'iso-8859-1', nrows=10000, parse_dates=dates)
+tags_df = pd.read_csv(file_tags, encoding = 'iso-8859-1', nrows=10000)
 
 
-# In[ ]:
+# In[3]:
 
 
 # Add extra columns to dataframes
 # This takes a long time (~10 minutes) to process the entire dataset
 # Might be worth exploring the pandas to_pickle() method for saving/loading the dataframes
-questions_df['Body_no_tags']=questions_df['Body'].apply(strip_tags)
-questions_df['Body_no_tags_no_code']=questions_df['Body'].apply(get_text_no_code)
-questions_df['Body_code']=questions_df['Body'].apply(get_code)
 
-answers_df['Body_no_tags']=answers_df['Body'].apply(strip_tags)
+questions_df = questions_df.fillna('')
+#questions_df['Body_no_tags']=questions_df['Body'].apply(strip_tags)
+questions_df['Body_no_tags_no_code']=questions_df['Body'].apply(get_text_no_code)
+#questions_df['Body_code']=questions_df['Body'].apply(get_code)
+
+#answers_df['Body_no_tags']=answers_df['Body'].apply(strip_tags)
 answers_df['Body_no_tags_no_code']=answers_df['Body'].apply(get_text_no_code)
-answers_df['Body_code']=answers_df['Body'].apply(get_code)
+#answers_df['Body_code']=answers_df['Body'].apply(get_code)
+
+
+# In[10]:
+
+
+# Creates one database with every question linked to every answer
+# For questions with no answer the values are NaN
+suffixes = ['.q', '.a']
+excess_columns = ['OwnerUserId.q', 'Id.a', 'OwnerUserId.a','ParentId', 'Body.q','CreationDate.a', 'Body.a']
+QA_df = questions_df.merge(answers_df, how='left', left_on='Id', right_on='ParentId', suffixes=suffixes).drop(excess_columns , axis=1)
+
+# Merges the questions/answers with all the associated tags 
+QAT_df = QA_df.merge(tags_df, how='left', left_on='Id.q', right_on='Id', suffixes=['', '.t']).drop('Id', axis=1)
+QAT_df = QAT_df.fillna('')
+
+# Groups all the questions together with a list of all the answers scores and body
+# Includes the tags as well 
+# Uses a set- might be an issue for pairing the answer scores to the answers
+QAT_list = QAT_df.groupby('Id.q').agg(Id=('Id.q', 'max'),
+                                      CreationDate=('CreationDate.q', 'max'),
+                                      Q_Score=('Score.q', 'mean'),
+                                      Title=('Title', 'max'),
+                                      Q_Body=('Body_no_tags_no_code.q', 'max'),
+                                      A_Score=('Score.a', lambda x: set(x)),
+                                      A_Body=('Body_no_tags_no_code.a', lambda x: set(x)),
+                                      Tags=('Tag', lambda x: set(x)))
+QAT_list.A_Body = QAT_list.A_Body.apply(lambda s: ' '.join(s)) # Turns the set of Answers into a str
+
+
+# In[11]:
+
+
+# Filtering out certain questions
+QAT_list.iloc[0]['A_Body']
+
+
+# In[ ]:
+
+
+# Creates one database with every question linked to every answer
+# Questions with no answers are dropped
+QA_df = questions_df.merge(answers_df, how='right', left_on='Id', right_on='ParentId', suffixes=suffixes).drop(excess_columns , axis=1)
+QAT_df = QA_df.merge(tags_df, how='left', left_on='Id.q', right_on='Id', suffixes=['', '.t']).drop('Id', axis=1)
 
 
 # In[ ]:
@@ -168,7 +229,7 @@ print(body)
 # In[ ]:
 
 
-print(body_no_tags)
+print(questions_df)
 
 
 # In[ ]:
@@ -181,10 +242,4 @@ print(body_no_tags_no_code)
 
 
 print(body_code)
-
-
-# In[ ]:
-
-
-
 
