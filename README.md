@@ -3,8 +3,6 @@
 We analyzed the "Python Questions from Stack Overflow" Kaggle dataset (https://www.kaggle.com/stackoverflow/pythonquestions?select=Questions.csv) to see what the common difficulties were in learning Python. 
 The library dependencies are listed in the environment.yml file.
 
-'''Include a readme file that explains your file structure, how to run your code, and name all third-party modules you are using. 
-'''
 
 ## Data Preprocessing
 
