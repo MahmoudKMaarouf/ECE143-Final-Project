@@ -692,19 +692,19 @@ format =".pkl"
 
 def topic_model_coherence_generator(corpus, texts, dictionary, start_topic_count=25, end_topic_count=125, step=25):
     """Get the coherance score for differnt topic values from 25 and 150"""
-  models = []
-  coherence_scores = []
-  for topic_nums in tqdm(range(start_topic_count, end_topic_count+1, step)):
-    ldamodel = LdaModel(corpus=corpus, num_topics=topic_nums, id2word=id2word, eval_every=None, passes=20,per_word_topics=True)
-    dir_name="C:\\Users\\hamed\\OneDrive\\Desktop\\ECE 143 Project Data Files\\"
-    save_dir=os.path.join(dir_name, "ldamodel_"+ str(topic_nums) +"_QAT_3_7" + format)
-    pickle.dump(ldamodel, open(save_dir, "wb"))
-    
+    models = []
+    coherence_scores = []
+    for topic_nums in tqdm(range(start_topic_count, end_topic_count+1, step)):
+        ldamodel = LdaModel(corpus=corpus, num_topics=topic_nums, id2word=id2word, eval_every=None, passes=20,per_word_topics=True)
+        dir_name="C:\\Users\\hamed\\OneDrive\\Desktop\\ECE 143 Project Data Files\\"
+        save_dir=os.path.join(dir_name, "ldamodel_"+ str(topic_nums) +"_QAT_3_7" + format)
+        pickle.dump(ldamodel, open(save_dir, "wb"))
+
     cv_coherence_model_lda = gensim.models.CoherenceModel (model=ldamodel, corpus=corpus, texts=texts,
-                                                                     dictionary=dictionary, coherence='c_v')
-      
+                                                                        dictionary=dictionary, coherence='c_v')
+        
     coherence_score = cv_coherence_model_lda.get_coherence()
     coherence_scores.append(coherence_score)
     models.append(ldamodel)
-  return models, coherence_scores  
+    return models, coherence_scores  
 
