@@ -16,7 +16,7 @@ This `extract_data.py` contains a parser class that is used to process the HTML-
 The `Topic_Modeling_Questions_Answers_Tags.py` has the train topic modeling algorithms. The codes start by pre-processing the dataset. This process includes tokenization, removal of stop words, build bigram and trigram, and Lemmatization. Then the dictionary and corpus of all unique words are made. After completion of preprocessing the data is fed to topic modeling alogrithems. The LDA algorithms used are LDA Mallet by UMASS, LDA, and LDA Multicore both by gensim library. The quality of each model then is analyzed by computing coherence score, and then each model is compared with the rest by JCARD distance displayed on heatmap. LDA is trained for topics from 25 to 150 by step size of 25 to compare and measure properness of topics numbers. Visualization of the output are created using Word Cloud, and by an interactive chart for each model. 
 The third-party modules needed to run the code are:
 - LDA Mallet (Downlaod form UMASS website)
-- JDK (Only needed to run LDA Mallet
+- JDK (Only needed to run LDA Mallet)
 - en_core_web_sm
 - scipy
 - matplotlib
